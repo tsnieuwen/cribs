@@ -127,6 +127,7 @@ pry(main)> house.details
 ## Iteration 4
 
 Use TDD to update your `House` class so that it responds to the following interaction pattern:
+Sorted by area will be from largest to smallest.
 
 ```ruby
 pry(main)> require './lib/room'
