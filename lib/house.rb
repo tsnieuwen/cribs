@@ -28,11 +28,11 @@ attr_reader :price,
   end
 
   def area
-    total_area = 0
+    @total_area = 0
     @rooms.each do |room|
-      total_area += room.area
+      @total_area += room.area
     end
-    total_area
+    @total_area
   end
 
   def details
@@ -42,4 +42,31 @@ attr_reader :price,
     details_hash
   end
 
+  def price_per_square_foot
+    area
+    (@price.to_f/@total_area.to_f).round(2)
+  end
+
+  def rooms_sorted_by_area
+    (@rooms.sort_by { |room| room.area}).reverse
+  end
+
+  def get_all_from_category(room_category)
+    @rooms.select do |room|
+      room.category == room_category
+    end
+  end
+
+  # def rooms_by_category
+  #   sort_room_category_hash = {}
+  #   @rooms.each do |room|
+  #     room_categories = get_all_from_category(room.category)
+  #     room_array = []
+  #     room.category.each do |room|
+  #       room_array << room.category
+  #     end
+  #     sort_room_category_hash[room.category] = room_array
+  #   end
+  #   sort_room_category_hash
+  # end
 end
